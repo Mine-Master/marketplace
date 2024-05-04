@@ -63,7 +63,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Corepass Admin
+            MarketPlace
           </Typography>
         </Toolbar>
       </AppBar>
