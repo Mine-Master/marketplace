@@ -4,7 +4,6 @@ import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -15,11 +14,15 @@ import { SideBar } from "./sideBar";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "@mui/material";
 import { mediaQueries } from "styles/mediaQueries";
+import { useNavigate } from "react-router-dom";
+import { Header } from "./header";
+import { IMAGES } from "assets/react_asset_gen";
 
 const DRAWER_WIDTH = 275;
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [open, setOpen] = useState(!isSmallScreen);
@@ -37,6 +40,15 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
       setOpen(false);
     }
   }, [isSmallScreen]);
+
+  const handleLogoClick = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+    navigate(`/`);
+  };
 
   return (
     <Box sx={{ display: "flex", width: "100%" }}>
@@ -62,9 +74,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            MarketPlace
-          </Typography>
+          <Header open={open} />
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -74,6 +84,21 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             bgcolor: "var(--primary)",
           }}
         >
+          <Name>
+            <LogoStyle
+              src={IMAGES.Logo_Header}
+              alt="Logo"
+              onClick={handleLogoClick}
+            />
+            <CompanyNameWrapper>
+              <CompanyName>M</CompanyName>
+              <BlueCharacter>I</BlueCharacter>
+              <CompanyName>N</CompanyName>
+              <OrangeCharacter>E</OrangeCharacter>
+              &nbsp;
+              <CompanyName>MASTERS</CompanyName>
+            </CompanyNameWrapper>
+          </Name>
           <IconButton
             onClick={handleDrawerOpenClose}
             sx={{
@@ -136,7 +161,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  justifyContent: "flex-end",
+  justifyContent: "space-between",
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
@@ -194,4 +219,41 @@ export const Wrapper = styled("div")`
   width: 100%;
   ${mediaQueries.lessThan("xs")`
     padding: 16px;`}
+`;
+
+const Name = styled("div")`
+  display: flex;
+  padding: 0 10px;
+  gap: 24px;
+  align-items: center;
+`;
+const CompanyNameWrapper = styled("div")`
+  display: flex;
+  align-items: center;
+`;
+const CompanyName = styled("p")`
+  font-family: "Big Shoulders Stencil Text", sans-serif;
+  color: #fff;
+  font-size: 24px;
+  margin: 0;
+`;
+
+const BlueCharacter = styled("h1")`
+  font-family: "Big Shoulders Stencil Text", sans-serif;
+  color: var(--Pastal-Blue);
+  font-size: 24px;
+  margin: 0;
+`;
+
+const OrangeCharacter = styled("h1")`
+  font-family: "Big Shoulders Stencil Text", sans-serif;
+  color: var(--orange);
+  font-size: 24px;
+  margin: 0;
+`;
+
+const LogoStyle = styled("img")`
+  cursor: pointer;
+  width: 24px;
+  height: 26.67px;
 `;

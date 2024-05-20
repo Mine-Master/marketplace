@@ -19,6 +19,7 @@ export enum Themes {
 type ITab = {
   name: string;
   img: string;
+  hoverImg: string;
   routeTo: string;
 };
 
@@ -26,6 +27,7 @@ export type ITabs = {
   [key: string]: {
     name: string;
     img: string;
+    hoverImg: string;
     routeTo: string;
     children?: ITab[];
   };

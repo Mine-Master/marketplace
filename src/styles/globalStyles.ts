@@ -13,6 +13,8 @@ const GlobalStyle = createGlobalStyle`
   --button-text:#fff;
   --background-color:#fff;
   --primary: rgba(7, 0, 18, 1);
+  --orange:#ffc14d;
+  --Pastal-Blue: #00caff;
 }
 .DARK {
     --text: #e5e7eb;
@@ -94,14 +96,14 @@ html {
   overflow-x: hidden;
 }
 *{
-  color: var(--text);
+  color: #fff;
  box-sizing:border-box ;
  font-family : var(--font),sans-serif,system-ui, -apple-system,'Helvetica Neue',"Rubik";
 }
 `;
 //COLUMN
 
-export const ROW = css`
+export const ROW = `
   display: flex;
   flex-direction: row;
 `;
@@ -117,7 +119,7 @@ export const COLUMN_CENTER = css`
   ${CENTER}
   ${COLUMN}
 `;
-export const ROW_CENTER = css`
+export const ROW_CENTER = `
   ${CENTER}
   ${ROW}
 `;
@@ -171,7 +173,7 @@ export const COLUMN_ALIGN_START__SPACE_B = css`
   justify-content:space-between;
   align-items: flex-start;
 `;
-export const COLUMN_ALIGN_CENTER__SPACE_B = css`
+export const COLUMN_ALIGN_CENTER__SPACE_B = `
   ${COLUMN}
   justify-content:space-between;
   align-items: center;
@@ -219,7 +221,7 @@ export const ROW_ALIGN_END__JUSTIFY_START = css`
   justify-content: flex-end;
   align-items: flex-end;
 `;
-export const ROW_ALIGN_END__SPACE_B = css`
+export const ROW_ALIGN_END__SPACE_B = `
   ${ROW}
   justify-content:space-between;
   align-items: flex-end;
@@ -229,7 +231,7 @@ export const ROW_ALIGN_START__SPACE_B = css`
   justify-content:space-between;
   align-items: flex-start;
 `;
-export const ROW_ALIGN_CENTER__SPACE_B = css`
+export const ROW_ALIGN_CENTER__SPACE_B = `
   ${ROW}
   justify-content:space-between;
   align-items: center;
@@ -246,7 +248,7 @@ export const UNSELECTABLE = css`
   -ms-user-select: none;
   user-select: none;
 `;
-export const BUTTON = css`
+export const BUTTON = `
   ${UNSELECTABLE}
   border: none;
   text-align: center;

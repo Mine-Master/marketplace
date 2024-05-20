@@ -1,5 +1,5 @@
-import shopIcon from "./assets/svg/shop.svg";
 import { ITabs } from "./types";
+import { IMAGES } from "assets/react_asset_gen";
 export const Val = "";
 
 export const TABS: ITabs = {
@@ -11,27 +11,32 @@ export const TABS: ITabs = {
   // },
   Home: {
     name: "Home",
-    img: shopIcon,
+    img: IMAGES.home,
+    hoverImg: IMAGES.homeHover,
     routeTo: "",
   },
   MarketPlace: {
     name: "MarketPlace",
-    img: shopIcon,
+    img: IMAGES.Marplace,
+    hoverImg: IMAGES.marketplaceHover,
     routeTo: "",
   },
   Events: {
     name: "Events",
-    img: shopIcon,
+    img: IMAGES.events,
+    hoverImg: IMAGES.eventsHover,
     routeTo: "",
   },
   About: {
     name: "About",
-    img: shopIcon,
+    img: IMAGES.about,
+    hoverImg: IMAGES.aboutHover,
     routeTo: "",
   },
   Support: {
     name: "Support",
-    img: shopIcon,
+    img: IMAGES.support,
+    hoverImg: IMAGES.supportHover,
     routeTo: "",
   },
 };
