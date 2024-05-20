@@ -14,7 +14,7 @@ const sizes = {
   `,
 };
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   primary?: boolean;
   icon?: ReactNode;
   iconPosition?: "left" | "right";
@@ -25,7 +25,7 @@ const StyledButton = styled.button<ButtonProps>`
   ${BUTTON}
   ${ROW_CENTER}
   direction: ltr !important;
-  font-size: 16px;
+  font-size: 14px;
   background-color: var(--button);
   color: var(--button-text);
   border-radius: 8px;
