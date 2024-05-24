@@ -27,6 +27,7 @@ interface PrimaryButtonProps {
   error?: boolean;
   icon?: string;
   iconPosition?: "start" | "end";
+  onClick?: () => void,
   children?: React.ReactNode;
 }
 
@@ -37,6 +38,7 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   error,
   icon,
   iconPosition = "start",
+ onClick,
   children,
   ...props
 }) => {
@@ -66,7 +68,7 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       success={success}
       error={error}
       hasContent={Boolean(icon || children)}
-      onClick={() => {}}
+      onClick={onClick}
       {...props}
     >
       {iconPosition === "start" && (

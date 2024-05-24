@@ -14,6 +14,7 @@ interface SecondaryButtonProps {
   error?: boolean;
   icon?: string;
   iconPosition?: "start" | "end";
+  onClick?:()=>void;
   children?: React.ReactNode;
 }
 
@@ -24,10 +25,11 @@ export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
   error,
   icon,
   iconPosition = "start",
+  onClick,
   children,
   ...props
 }: SecondaryButtonProps) => {
-  const handleButtonClick = () => {};
+  
 
   return (
     <StyledSecondaryButton
@@ -35,7 +37,7 @@ export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
       disabled={disabled}
       success={success}
       error={error}
-      onClick={handleButtonClick}
+      onClick={onClick}
       hasChildren={!!children}
       {...props}
     >
