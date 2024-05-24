@@ -80,7 +80,9 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   );
 };
 
-const StyledPrimaryButton = styled(BaseButton)<{
+const StyledPrimaryButton = styled(BaseButton ,{
+  shouldForwardProp: (prop) => !['success', 'error', 'hasContent'].includes(prop),
+})<{
   disabled?: boolean;
   success?: boolean;
   error?: boolean;

@@ -51,7 +51,7 @@ export const Header: React.FC<HeaderProps> = ({ open }) => {
           <SecondaryButton icon={IMAGES.cart} />
           <SecondaryButton icon={IMAGES.person} />
         </Icons>
-        <PrimaryButtons>let's play</PrimaryButtons>
+        <PrimaryButton>let's play</PrimaryButton>
       </RightSideWrapper>
     </HeaderWrapper>
   );
