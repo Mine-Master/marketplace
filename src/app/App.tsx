@@ -65,8 +65,9 @@ function App() {
 const Wrapper = styled.div`
   width: 100%;
   min-height: 100vh;
-  max-width: 1440px;
+  /* max-width: 1440px; */
   margin: 0 auto;
   ${COLUMN_ALIGN_START__JUSTIFY_START}
+  background-color:  #070012;
 `;
 export default App;

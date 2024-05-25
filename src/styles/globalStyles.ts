@@ -234,6 +234,11 @@ export const ROW_ALIGN_CENTER__SPACE_B = css`
   justify-content:space-between;
   align-items: center;
 `;
+export const ROW_ALIGN_CENTER__SPACE_C = css`
+  ${ROW}
+  justify-content:center;
+  align-items: center;
+`;
 export const FULL_WIDTH = css`
   width: 100%;
 `;

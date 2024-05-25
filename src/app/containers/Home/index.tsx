@@ -12,7 +12,10 @@ import { useInjectReducer, useInjectSaga } from "store/redux-injectors";
 import { homeSaga } from "./saga";
 import { selectHome } from "./selectors";
 import { homeReducer, sliceKey } from "./slice";
+import styled from "styled-components";
+import HeadTop from "./components/headTop";
 import { Wrapper } from "./styles";
+import Mechanism from "./components/mechanism";
 
 interface Props {}
 
@@ -31,6 +34,15 @@ export function Home(props: Props) {
         <title>Home</title>
         <meta name="description" content="Description of Home" />
       </Helmet>
+      <Container>
+      <HeadTop/>
+      <Mechanism/>
+      </Container>  
     </Wrapper>
   );
 }
+const Container=styled.div`
+  width: 100%;
+  background-color:  #070012CC;
+
+`
