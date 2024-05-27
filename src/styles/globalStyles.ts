@@ -3,79 +3,19 @@ import { createGlobalStyle, css } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 
 :root {
-  --text: #84868a;
-  --font:"Inter", "Rubik";
+  --text: #FEF7FF;
+  --font:"Ubuntu", "sans-serif";
   --persian-font:"Rubik";
-  --border:#E2E8F0;
-  --title:#0E172A;
-  --background-secondary:rgb(248 250 252/1);
-  --button:#007ACC;
-  --button-text:#fff;
-  --background-color:#fff;
-  --primary: rgba(7, 0, 18, 1);
+  --border:rgba(90,24,154,0.5);
+  --title:#9D4EDD;
+  --background-secondary:rgba(254,247,255,0.05);
+  --button-text:#FEF7FF;
+  --background-color:#070012;
+  --primary: #5A189A;
   --orange:#ffc14d;
   --Pastal-Blue: #00caff;
 }
 .DARK {
-    --text: #e5e7eb;
-    --border: #374151;
-    --title: #ffffff;
-    --background-secondary: #1f2937;
-    --background-color: #111827;
-}
-.DRACULA{
-  --text: #f8f8f2;
-  --border: #44475a;
-  --title: #50fa7b;
-  --background-secondary: #282a36;
-  --button: #bd93f9;
-  --button-text: #f8f8f2;
-  --background-color: #282a36;
-}
-.SOLAR{
-  --text: #657b83;
-  --border: #93a1a1;
-  --title: #268bd2;
-  --background-secondary: #fdf6e3;
-  --button: #cb4b16;
-  --button-text: #fdf6e3;
-  --background-color: #002b36;
-}
-.NORD{
-  --text: #d8dee9;
-  --border: #4c566a;
-  --title: #81a1c1;
-  --background-secondary: #2e3440;
-  --button: #88c0d0;
-  --button-text: #2e3440;
-  --background-color: #3b4252;
-}
-.DISCORD{
-  --text: #b9bbbe;
-  --border: #4f545c;
-  --title: #7289da;
-  --background-secondary: #36393f;
-  --button: #7289da;
-  --button-text: #ffffff;
-  --background-color: #2f3136;
-}
-.MIDNIGHT{
-  --text: #c3c3c3;
-  --border: #586069;
-  --title: #99aab5;
-  --background-secondary: #292b2f;
-  --button: #00bcd4; /* Cyan accent color */
-  --button-text: #ffffff;
-  --background-color: #1e1e1e;
-}
-.LOCA{
-  --text: #d8dee9;
-  --border: #a4acc4;
-  --title: #ffcc00;
-  --background-secondary: #3d4754;
-  --button: #4caf50;
-  --button-text: #ffffff;
-  --background-color: #282c34;
 }
 .fa{
   --font:"Rubik" !important;

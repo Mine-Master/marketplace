@@ -1,139 +1,68 @@
 import * as React from "react";
+import styled from "@emotion/styled";
+import BaseInput, { BaseInputProps } from "../baseInput";
 import { IMAGES } from "assets/react_asset_gen";
-import styled, { css } from "styled-components";
-import { InputAdornment } from "@mui/material";
-import BaseInput from "../baseInput";
 
-interface SearchInputProps {
-  placeholder?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  value?: string;
-  startDecorator?: React.ReactNode;
-  disabled?: boolean;
-  error?: boolean;
-  customStyle?: boolean;
-}
+interface SecondaryInputProps extends BaseInputProps {}
 
-const SecondaryInput: React.FC<SearchInputProps> = ({
-  placeholder = "Search…",
-  onChange,
-  value = "",
-  disabled = false,
-  error = false,
-  startDecorator = <img src={IMAGES.secondarySearchIcon} alt="search icon" />,
-  customStyle = false,
-  ...props
-}) => {
-  const getInputStartDecorator = () => {
-    if (error)
-      return <img src={IMAGES.SearchIconError} alt="search icon error" />;
-    if (disabled)
-      return (
-        <img
-          src={IMAGES.disabledSearchSecondaryIcon}
-          alt="disabled search icon"
-        />
-      );
-    return <img src={IMAGES.secondarySearchIcon} alt="search icon" />;
-  };
+const SecondaryInput: React.FC<SecondaryInputProps> = ({...props}) => {
+  
   const handleClearClick = () => {
-    if (onChange) {
-      onChange({
+    if (props.onChange) {
+      props.onChange({
         target: { value: "" },
       } as React.ChangeEvent<HTMLInputElement>);
     }
   };
-
+  const mergedEndAdornment = (
+    <>
+      {props.InputProps?.endAdornment}
+      <ClearIcon onClick={handleClearClick} style={{visibility :props.value ?"visible" : "hidden"}}>
+        <img src={props.error ? IMAGES.TimesError : IMAGES.secondaryTimes} alt="clear icon" />
+      </ClearIcon>
+      <XCNNumber error={!!props.error} disabled={!!props.disabled}>
+        00.00 XCN
+      </XCNNumber>
+    </>
+  );
+  const inputProps = {
+    ...props.InputProps,
+    endAdornment: mergedEndAdornment,
+  };
+  
+  
   return (
-    <StyledBaseInput
-      placeholder={placeholder}
-      startDecorator={getInputStartDecorator()}
-      endDecorator={
-        <InputAdornment position="end">
-          {value && (
-            <ClearIcon onClick={handleClearClick}>
-              <img
-                src={error ? IMAGES.TimesError : IMAGES.secondaryTimes}
-                alt={error ? "error clear icon" : "times icon"}
-              />
-            </ClearIcon>
-          )}
-          {customStyle && (
-            <XCNNumber error={error} disabled={disabled}>
-              00.00 XCN
-            </XCNNumber>
-          )}
-        </InputAdornment>
-      }
-      value={value}
-      onChange={onChange}
-      disabled={disabled}
-      error={error}
-      customStyle={customStyle}
-      sx={{
-        "--Input-placeholderOpacity": 1,
-        "--Input-focusedThickness": "0px",
-      }}
-      variant="solid"
-      {...props}
-    />
+    <SecondaryInputContainer error={!!props.error} disabled={!!props.disabled}>
+    <BaseInput {...props} customStyle={true} InputProps={inputProps} isSecondary={true}/>
+  </SecondaryInputContainer>
   );
 };
 
 export default SecondaryInput;
 
-const StyledBaseInput = styled(BaseInput)<{
-  error: boolean;
-  disabled: boolean;
-  customStyle: boolean;
-}>`
-  font-size: 15px !important;
-  font-weight: 500;
-  line-height: 24px;
-  font-family: "Ubuntu", sans-serif;
-  border: 1px solid
-    ${(props) =>
-      props.error
-        ? "#9A183F"
-        : props.disabled
-          ? "rgba(254, 247, 255, 0.2)"
-          : "#5a189a"};
-  border-radius: 16px !important;
-  height: ${(props) => (props.customStyle ? "58px" : "48px")};
-  width: ${(props) => (props.customStyle ? "528px" : "370px")};
-
-  color: ${(props) =>
-    props.error
-      ? "#9A183F"
-      : props.disabled
-        ? "#070012CC"
-        : "#5a189a"} !important;
-  background: ${(props) =>
-    props.disabled ? "#070012CC" : "#070012cc"} !important;
-  ${(props) =>
-    props.customStyle &&
-    css`
-      font-size: 24px;
-      font-weight: 500;
-      line-height: 33.6px;
-      text-align: left;
-    `}
-  &.Mui-focused {
-    --Input-placeholderOpacity: 0;
-    box-shadow: 2px 2px 16.1px 0px
-      ${(props) =>
-        props.disabled ? "#5a189a80" : props.error ? "#9A183F80" : "#5a189a80"};
+const SecondaryInputContainer = styled.div<{ error: boolean; disabled: boolean }>`
+  .MuiOutlinedInput-root {
+    font-size: 16px !important;
+    font-weight: 500;
+    line-height: 24px;
+    font-family: "Ubuntu", sans-serif;
+    border: 1px solid
+      ${(props) => (props.error ? "#9A183F" : props.disabled ? "rgba(254, 247, 255, 0.2)" : "#5a189a")};
+    border-radius: 16px !important;
+    height: 58px;
+    width: 528px;
+    color: ${(props) => (props.error ? "#9A183F" : props.disabled ? "#070012CC" : "#5a189a")} !important;
+    background: ${(props) => (props.disabled ? "#070012CC" : "#070012cc")} !important;
+    &.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border: 1px solid  ${(props)=>props.error? '#9A183F':'#5A189A'} !important;
+    }
+    &.Mui-focused {
+      --Input-placeholderOpacity: 0;
+      box-shadow: 2px 2px 16.1px 0px
+        ${(props) =>
+          props.disabled ? "#5a189a80" : props.error ? "#9A183F80" : "#5a189a80"};
+    }
   }
-`;
-
-const ClearIcon = styled.div`
-  cursor: pointer;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
 `;
 
 const XCNNumber = styled.div<{ error: boolean; disabled: boolean }>`
@@ -142,19 +71,18 @@ const XCNNumber = styled.div<{ error: boolean; disabled: boolean }>`
   line-height: 16.09px;
   text-align: left;
   color: ${(props) =>
-    props.error
-      ? "#9A183F"
-      : props.disabled
-        ? "rgba(254, 247, 255, 0.2)"
-        : "#5a189a"};
+    props.error ? "#9A183F" : props.disabled ? "rgba(254, 247, 255, 0.2)" : "#5a189a"};
   border-left: 2px solid
     ${(props) =>
-      props.error
-        ? "#9A183F"
-        : props.disabled
-          ? "rgba(254, 247, 255, 0.2)"
-          : "#5a189a"};
-
+      props.error ? "#9A183F" : props.disabled ? "rgba(254, 247, 255, 0.2)" : "#5a189a"};
   padding-left: 8px;
   margin-left: 8px;
+  white-space: nowrap;
+`;
+const ClearIcon = styled.div`
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

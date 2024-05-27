@@ -14,9 +14,9 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ open }) => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [search, setSearch ]= useState("");
   const handle = (e: any) => {
-    setEmail(e.target.value);
+    setSearch(e.target.value);
   };
   const handleLogoClick = () => {
     window.scrollTo({
@@ -46,12 +46,14 @@ export const Header: React.FC<HeaderProps> = ({ open }) => {
         </Name>
       )}
       <RightSideWrapper>
-        <SearchInput placeholder="Search..." value={email} onChange={handle} />
+        <SearchInput placeholder="Search"  
+        value={search} onChange={handle}   
+        />
         <Icons>
           <SecondaryButton icon={IMAGES.cart} />
           <SecondaryButton icon={IMAGES.person} />
         </Icons>
-        <PrimaryButton>let's play</PrimaryButton>
+        <PrimaryButtons>let's play</PrimaryButtons>
       </RightSideWrapper>
     </HeaderWrapper>
   );

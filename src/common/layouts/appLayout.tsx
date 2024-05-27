@@ -58,7 +58,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
         open={open}
         sx={{
           color: "var(--title)",
-          bgcolor: "var(--primary)",
+          bgcolor: "var(--background-color)",
         }}
       >
         <Toolbar>
@@ -81,7 +81,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
         <DrawerHeader
           sx={{
             color: "var(--title)",
-            bgcolor: "var(--primary)",
+            bgcolor: "var(--background-color)",
           }}
         >
           <Name>
@@ -116,7 +116,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
         <Box
           sx={{
             color: "var(--title)",
-            bgcolor: "var(--primary)",
+            bgcolor: "var(--background-color)",
             height: "100%",
           }}
         >

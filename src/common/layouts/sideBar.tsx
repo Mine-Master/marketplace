@@ -202,7 +202,7 @@ const StyledListItemButton = styled(ListItemButton)`
   z-index: 1;
   position: relative;
   &.Mui-selected {
-    background: var(--Color-Primary-variations-Blue-80, rgba(7, 0, 18, 0.8));
+    background:  rgba(7, 0, 18, 0.8);
   }
   &:hover .MuiListItemIcon-root {
   }
