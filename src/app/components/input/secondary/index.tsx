@@ -5,7 +5,7 @@ import { IMAGES } from "assets/react_asset_gen";
 
 interface SecondaryInputProps extends BaseInputProps {}
 
-const SecondaryInput: React.FC<SecondaryInputProps> = ({...props}) => {
+const SecondaryInput: React.FC<SecondaryInputProps> = ({helperText,...props}) => {
   
   const handleClearClick = () => {
     if (props.onChange) {
@@ -33,7 +33,7 @@ const SecondaryInput: React.FC<SecondaryInputProps> = ({...props}) => {
   
   return (
     <SecondaryInputContainer error={!!props.error} disabled={!!props.disabled}>
-    <BaseInput {...props} customStyle={true} InputProps={inputProps} isSecondary={true}/>
+    <BaseInput {...props} customStyle={true} InputProps={inputProps} isSecondary={true} helperText={helperText}/>
   </SecondaryInputContainer>
   );
 };
@@ -47,14 +47,14 @@ const SecondaryInputContainer = styled.div<{ error: boolean; disabled: boolean }
     line-height: 24px;
     font-family: "Ubuntu", sans-serif;
     border: 1px solid
-      ${(props) => (props.error ? "#9A183F" : props.disabled ? "rgba(254, 247, 255, 0.2)" : "#5a189a")};
+      ${(props) => (props.error ? "var(--error)" : props.disabled ? "rgba(254, 247, 255, 0.2)" : "var(--primary")};
     border-radius: 16px !important;
     height: 58px;
     width: 528px;
-    color: ${(props) => (props.error ? "#9A183F" : props.disabled ? "#070012CC" : "#5a189a")} !important;
+    color: ${(props) => (props.error ? "var(--error)" : props.disabled ? "#070012CC" : "var(--primary)")} !important;
     background: ${(props) => (props.disabled ? "#070012CC" : "#070012cc")} !important;
     &.Mui-focused .MuiOutlinedInput-notchedOutline {
-      border: 1px solid  ${(props)=>props.error? '#9A183F':'#5A189A'} !important;
+      border: 1px solid  ${(props)=>props.error? "var(--error)":'var(--primary)'} !important;
     }
     &.Mui-focused {
       --Input-placeholderOpacity: 0;
@@ -71,10 +71,10 @@ const XCNNumber = styled.div<{ error: boolean; disabled: boolean }>`
   line-height: 16.09px;
   text-align: left;
   color: ${(props) =>
-    props.error ? "#9A183F" : props.disabled ? "rgba(254, 247, 255, 0.2)" : "#5a189a"};
+    props.error ? "var(--error)" : props.disabled ? "rgba(254, 247, 255, 0.2)" : "var(--primary)"};
   border-left: 2px solid
     ${(props) =>
-      props.error ? "#9A183F" : props.disabled ? "rgba(254, 247, 255, 0.2)" : "#5a189a"};
+      props.error ? "var(--error)" : props.disabled ? "rgba(254, 247, 255, 0.2)" : "var(--primary)"};
   padding-left: 8px;
   margin-left: 8px;
   white-space: nowrap;

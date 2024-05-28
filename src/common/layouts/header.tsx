@@ -7,6 +7,7 @@ import { PrimaryButton } from "app/components/button/primaryButton";
 import { IMAGES } from "assets/react_asset_gen";
 import { SecondaryButton } from "app/components/button/secondaryButton";
 import SearchInput from "app/components/input/primary";
+import SecondaryInput from "app/components/input/secondary";
 
 interface HeaderProps {
   open: boolean;
@@ -47,7 +48,7 @@ export const Header: React.FC<HeaderProps> = ({ open }) => {
       )}
       <RightSideWrapper>
         <SearchInput placeholder="Search"  
-        value={search} onChange={handle}   
+        value={search} onChange={handle}  
         />
         <Icons>
           <SecondaryButton icon={IMAGES.cart} />

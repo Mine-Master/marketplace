@@ -33,7 +33,7 @@ const StyledSecondaryButton = styled(BaseButton)<{ success?: boolean; error?: bo
   ${(props) =>
     props.error &&
     css`
-      border: 1px solid #9a183f;
+      border: 1px solid var(--error);
     `}
 `;
 

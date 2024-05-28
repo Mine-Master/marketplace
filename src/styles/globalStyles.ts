@@ -14,6 +14,8 @@ const GlobalStyle = createGlobalStyle`
   --primary: #5A189A;
   --orange:#ffc14d;
   --Pastal-Blue: #00caff;
+  --error: #9A183F;
+
 }
 .DARK {
 }

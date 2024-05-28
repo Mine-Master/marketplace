@@ -2,6 +2,7 @@
 import { InputAdornment, TextField, styled } from "@mui/material";
 import { IMAGES } from "assets/react_asset_gen";
 import * as React from "react";
+import { TEXT_12_700 } from "styles/global-typography";
 
 export interface BaseInputProps  {
   value?: string;
@@ -12,8 +13,9 @@ export interface BaseInputProps  {
   customStyle?: boolean;
   InputProps?: any;
   isSecondary?: boolean;
+  helperText?: string;
 }
-  const BaseInput: React.FC<BaseInputProps> = ({ value, onChange,placeholder,disabled,customStyle,error,InputProps,isSecondary, ...props }) => {
+  const BaseInput: React.FC<BaseInputProps> = ({ value, onChange,placeholder,disabled,customStyle,error,InputProps,isSecondary,helperText,...props }) => {
     const handleClearClick = () => {
       if (onChange) {
         onChange({
@@ -41,6 +43,7 @@ export interface BaseInputProps  {
     };
   
   return (
+    <>
       <Input
       {...props}
       value={value}
@@ -65,6 +68,8 @@ export interface BaseInputProps  {
         ...InputProps,      
       }}
       />
+      {helperText && <HelperText error={error}>{helperText}</HelperText>}
+    </>
   );
 };
 
@@ -77,31 +82,39 @@ const Input=styled(TextField)<{customStyle?:boolean}>`
 } 
 & :-webkit-autofill {
     box-shadow: 0 0 0px 1000px ${(props)=>props.customStyle ? "#070012": "#1f0f39"}  inset !important;
-    -webkit-text-fill-color: ${(props)=>props.customStyle ? "#5a189a": "var(--text)"} !important;
+    -webkit-text-fill-color: ${(props)=>props.customStyle ? "var(--primary)": "var(--text)"} !important;
     padding: 11.5px 0 !important;
   }
 
   & :-webkit-autofill:focus {
     box-shadow: 0 0 0px 1000px ${(props)=>props.customStyle ? "#070012": "#1f0f39"} inset !important;
-    -webkit-text-fill-color:${(props)=>props.customStyle ? "#5a189a": "var(--text)"} !important;
+    -webkit-text-fill-color:${(props)=>props.customStyle ? "var(--primary)": "var(--text)"} !important;
     padding: 11.5px 0 !important;
   }
 
   & :-webkit-autofill:hover {
     box-shadow: 0 0 0px 1000px ${(props)=>props.customStyle ? "#070012": "#1f0f39"}  inset !important;
-    -webkit-text-fill-color: ${(props)=>props.customStyle ? "#5a189a": "var(--text)"} !important;
+    -webkit-text-fill-color: ${(props)=>props.customStyle ? "var(--primary)": "var(--text)"} !important;
     padding: 11.5px 0 !important;
   }
 
   & :-webkit-autofill:active {
     box-shadow: 0 0 0px 1000px ${(props)=>props.customStyle ? "#070012": "#1f0f39"}  inset !important;
-    -webkit-text-fill-color:${(props)=>props.customStyle ? "#5a189a": "var(--text)"} !important;
+    -webkit-text-fill-color:${(props)=>props.customStyle ? "var(--primary)": "var(--text)"} !important;
     padding: 11.5px 0 !important;
   }
   .css-152mnda-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill {
     border-radius: initial !important;
   }
 `
+const HelperText = styled('div')<{error?: boolean}>`
+  ${TEXT_12_700}
+  margin-top: 4px;
+  margin-left: 8px;
+  font-family: 'Ubuntu', 'san serif';
+  color: ${(props) => props.error ? 'var(--error)' : 'var(--primary)'};
+`;
+
 export const ClearIcon = styled('div')`
   cursor: pointer;
   text-align: center;

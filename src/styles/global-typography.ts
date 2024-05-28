@@ -4,6 +4,11 @@ export const COMMON_PROPERTIES = css`
   letter-spacing: 0.05em;
 `;
 
+export const TEXT_12_700 = css`
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16.09px;
+`;
 export const TEXT_14_700 = css`
   font-size: 14px;
   font-weight: 700;

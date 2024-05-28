@@ -93,7 +93,7 @@ const BaseButtonStyled = styled(Button, {
   ${props =>
     props.error &&
     css`
-      border: 1px solid #9a183f;
+      border: 1px solid var(--error);
     `}
 `;
 const ButtonText = styled.span<{ textColor: string }>`
