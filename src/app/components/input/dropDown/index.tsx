@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import {
   FormControl,
   MenuItem,
@@ -22,7 +22,27 @@ interface DropDown {
 
 type Props = DropDown & SelectProps;
 
-const BaseDropdownInput: FC<Props> = ({ isLoading, placeholder, options, ...props }) => {
+const CustomArrowIcon = ({ open }: { open: boolean }) => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{
+      transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+      transition: 'transform 0.3s ease',
+      cursor:'pointer',
+      marginRight:'16px'
+    }}
+  >
+    <path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z" fill="#FEF7FF"/>
+  </svg>
+);
+
+const DropdownInput: FC<Props> = ({ isLoading, placeholder, options, ...props }) => {
+  const [open, setOpen] = useState(false);
+
   const renderValue = (selected: unknown) => {
     if (selected === '') {
       return <em>{placeholder}</em>;
@@ -45,6 +65,9 @@ const BaseDropdownInput: FC<Props> = ({ isLoading, placeholder, options, ...prop
         displayEmpty
         input={<OutlinedInput />}
         renderValue={renderValue}
+        IconComponent={() => <CustomArrowIcon open={open} />}
+        onOpen={() => setOpen(true)}
+        onClose={() => setOpen(false)}
         MenuProps={{
           PaperProps: {
             sx: {
@@ -76,11 +99,10 @@ export const BSelect = styled(Select)(() => ({
   height: '48px',
   width: '320px',
   color: 'var(--text)',
-  
   borderRadius: '16px',
   '& .MuiInputBase-root': {
     fontSize: '14px',
-    fontWight:'700',
+    fontWight: '700',
     fontFamily: 'Ubuntu, sans-serif',
     paddingRight: '30px !important',
   },
@@ -102,12 +124,9 @@ export const BSelect = styled(Select)(() => ({
   '& .Mui-focused .MuiOutlinedInput-notchedOutline, &.Mui-focused .MuiOutlinedInput-notchedOutline': {
     border: `none`,
   },
-  '& legend': {
-    fontSize: '11px',
-  },
   '&.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper': {
     backgroundColor: 'rgba(16, 0, 43, 1) !important',
   },
 }));
 
-export default BaseDropdownInput;
+export default DropdownInput;

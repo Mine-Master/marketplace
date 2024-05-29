@@ -7,9 +7,6 @@ import { PrimaryButton } from "app/components/button/primaryButton";
 import { IMAGES } from "assets/react_asset_gen";
 import { SecondaryButton } from "app/components/button/secondaryButton";
 import SearchInput from "app/components/input/primary";
-import SecondaryInput from "app/components/input/secondary";
-import BaseDropdownInput from "app/components/input/dropDown";
-import { Email, Label } from "@mui/icons-material";
 
 interface HeaderProps {
   open: boolean;
@@ -49,22 +46,9 @@ export const Header: React.FC<HeaderProps> = ({ open }) => {
         </Name>
       )}
       <RightSideWrapper>
-        <BaseDropdownInput 
-        // placeholder="Search"  
-        // value={search} onChange={handle} 
-        value={search}
-        onChange={handle}
-        options={[
-          { label: 'Option 1', value: 1 },
-          { label: 'Option 2', value: 2 },
-          
-        ]}
-        placeholder="Select an option"
-        // helperText="This is a helper text"
-        error={false}
-        // label="Dropdown Label"
-        // fullWidth
-        isLoading={false}  
+        <SearchInput 
+        placeholder="Search"  
+        value={search} onChange={handle}       
         />
         <Icons>
           <SecondaryButton icon={IMAGES.cart} />
