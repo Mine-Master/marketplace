@@ -2,6 +2,7 @@ import { AboutMeState } from 'app/containers/AboutMe/types';
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 
 import { HomeState } from "app/containers/Home/types";
+import { MarketPlaceState } from 'app/containers/MarketPlace/types';
 import { GlobalState } from "store/slice";
 
 /* 
@@ -13,6 +14,7 @@ import { GlobalState } from "store/slice";
 export interface RootState {
   global?: GlobalState;
   home?: HomeState;
+  marketPlace?:MarketPlaceState
   aboutMe?: AboutMeState;
 // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
 }

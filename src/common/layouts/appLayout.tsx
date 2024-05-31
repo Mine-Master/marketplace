@@ -112,7 +112,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             )}
           </IconButton>
         </DrawerHeader>
-        <Divider />
+        <DividerStyle />
         <Box
           sx={{
             color: "var(--title)",
@@ -203,11 +203,17 @@ const Drawer = styled(MuiDrawer, {
   boxSizing: "border-box",
   ...(open && {
     ...openedMixin(theme),
-    "& .MuiDrawer-paper": openedMixin(theme),
+    "& .MuiDrawer-paper":{
+      ...openedMixin(theme),
+      borderRight: '1px solid rgba(7, 0, 18, 0.8)', 
+    },
   }),
   ...(!open && {
     ...closedMixin(theme),
-    "& .MuiDrawer-paper": closedMixin(theme),
+    "& .MuiDrawer-paper":  {
+      ...closedMixin(theme),
+      borderRight: '1px solid rgba(7, 0, 18, 0.8)', 
+    },
   }),
   [theme.breakpoints.down("sm")]: {
     display: open ? "block" : "none",
@@ -257,3 +263,6 @@ const LogoStyle = styled("img")`
   width: 24px;
   height: 26.67px;
 `;
+const DividerStyle=styled(Divider)`
+  border:1px solid rgba(7, 0, 18, 0.8);
+`

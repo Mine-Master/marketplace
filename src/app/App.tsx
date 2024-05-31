@@ -13,6 +13,7 @@ import { NotFoundPage } from "./containers/NotFound";
 import history from "./router/history";
 import { AppPages } from "./types";
 import { AppLayout } from "common/layouts/appLayout";
+import { MarketPlace } from "./containers/MarketPlace";
 interface CustomRouterProps {
   history: History;
   children?: ReactElement;
@@ -54,6 +55,7 @@ function App() {
         <Routes>
           <Route path={AppPages.RootPage} element={<NavLayout />}>
             <Route path={AppPages.RootPage} element={<Home />} />
+            <Route path={AppPages.MarketPlace} element={<MarketPlace />} />
             <Route path={AppPages.AboutMe} element={<AboutMe />} />
             <Route path={AppPages.NotFoundPage} element={<NotFoundPage />} />
           </Route>
@@ -65,7 +67,8 @@ function App() {
 const Wrapper = styled.div`
   width: 100%;
   min-height: 100vh;
-  max-width: 1440px;
+  /* max-width: 1440px; */
+  background-color: var(--background-color);
   margin: 0 auto;
   ${COLUMN_ALIGN_START__JUSTIFY_START}
 `;

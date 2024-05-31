@@ -4,7 +4,7 @@ export const COMMON_PROPERTIES = css`
   letter-spacing: 0.05em;
 `;
 
-export const TEXT_12_700 = css`
+export const TEXT_12_700 = `
   font-size: 12px;
   font-weight: 700;
   line-height: 16.09px;
@@ -15,12 +15,17 @@ export const TEXT_14_700 = css`
   line-height: 16.09px;
 `;
 
-export const TEXT_16_500 = css`
+export const TEXT_16_500 = `
   font-size: 16px;
   font-weight: 500;
   line-height: 18px;
 `;
 
+export const TEXT_16_700=`
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 18px;
+`
 export const TEXT_24_400 = css`
   font-size: 24px;
   font-weight: 400;
@@ -32,7 +37,11 @@ export const TEXT_24_500 = css`
   font-weight: 500;
   line-height: 28px;
 `;
-
+export const TEXT_24_700 = `
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 27.58px;
+`;
 export const TEXT_32_400 = css`
   font-size: 32px;
   font-weight: 400;

@@ -57,7 +57,7 @@ const CENTER = css`
   align-items: center;
   justify-content: center;
 `;
-export const COLUMN_CENTER = css`
+export const COLUMN_CENTER = `
   ${CENTER}
   ${COLUMN}
 `;
@@ -123,9 +123,14 @@ export const COLUMN_ALIGN_CENTER__SPACE_B = `
 
 // ROWS
 
-export const ROW_JUSTIFY_END__ALIGN_CENTER = css`
+export const ROW_JUSTIFY_END__ALIGN_CENTER = `
   ${ROW}
   justify-content: flex-end;
+  align-items: center;
+`;
+export const ROW_JUSTIFY_CENTER__ALIGN_CENTER = `
+  ${ROW}
+  justify-content: center;
   align-items: center;
 `;
 export const ROW_JUSTIFY_START__ALIGN_CENTER = css`
