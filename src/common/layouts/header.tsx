@@ -1,13 +1,26 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { ROW_ALIGN_CENTER__SPACE_B } from "styles/globalStyles";
+import { COLUMN_JUSTIFY_START__ALIGN_CENTER, ROW_ALIGN_CENTER__SPACE_B, ROW_ALIGN_START__JUSTIFY_CENTER, ROW_ALIGN_START__JUSTIFY_START, ROW_JUSTIFY_CENTER__ALIGN_CENTER, ROW_JUSTIFY_START__ALIGN_CENTER } from "styles/globalStyles";
 import { mediaQueries } from "styles/mediaQueries";
 import { useNavigate } from "react-router-dom";
 import { PrimaryButton } from "app/components/button/primaryButton";
 import { IMAGES } from "assets/react_asset_gen";
 import { SecondaryButton } from "app/components/button/secondaryButton";
 import SearchInput from "app/components/input/primary";
+import { Modal } from "app/components/modal";
+import profileImage from 'assets/c6c96a4ec39c33d32fc11058a6c5c4e7.png'
+import { TEXT_16_700, TEXT_24_700 } from "styles/global-typography";
+import { Box } from "@mui/material";
 
+const items = [
+  { icon: IMAGES.person, name: 'Profile' },
+  { icon: IMAGES.Notifications, name: 'Notifications' },
+  { icon: IMAGES.Favorited, name: 'Favorited' },
+  { icon: IMAGES.Setting, name: 'Setting' },
+  { icon: IMAGES.Languages, name: 'Languages' },
+  { icon: IMAGES.Help, name: 'Help' },
+  { icon: IMAGES.Learn, name: 'Learn' },
+];
 interface HeaderProps {
   open: boolean;
 }
@@ -15,6 +28,15 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ open }) => {
   const navigate = useNavigate();
   const [search, setSearch ]= useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
   const handle = (e: any) => {
     setSearch(e.target.value);
   };
@@ -52,14 +74,94 @@ export const Header: React.FC<HeaderProps> = ({ open }) => {
         />
         <Icons>
           <SecondaryButton icon={IMAGES.cart} />
-          <SecondaryButton icon={IMAGES.person} />
+          <SecondaryButton icon={IMAGES.person} onClick={handleOpenModal}/>
         </Icons>
         <PrimaryButtons>let's play</PrimaryButtons>
       </RightSideWrapper>
+      <ModalStyle
+        open={isModalOpen}
+        onClose={handleCloseModal}
+        title=" "
+      >
+        <ModalContainer>
+          <AdminProfile>
+            <ProfileImage src={profileImage} alt='Profile Image'/>
+            <NameLink>
+              <ProfileName>mamad sokhangoo</ProfileName>
+              <ConnectIcons>
+                <ConnectIcon src={IMAGES.youtube} alt='youtube'/>
+                <ConnectIcon src={IMAGES.discord} alt='discord'/>
+              </ConnectIcons>
+            </NameLink>
+          </AdminProfile>
+          <ConnectWallet/>
+          <ProfilesTab>
+          {items.map((item, index) => (
+              <Items key={index} display="flex" alignItems="center" gap={2}>
+                <ConnectIcon src={item.icon} />
+                <ItemsName>{item.name}</ItemsName>
+              </Items>
+            ))}
+          </ProfilesTab>
+        </ModalContainer>
+      </ModalStyle>
     </HeaderWrapper>
   );
 };
-
+const ModalContainer=styled('div')`
+   /* padding:90px 32px 189px 32px; */
+`
+const AdminProfile=styled('div')`
+  ${ROW_JUSTIFY_CENTER__ALIGN_CENTER}
+  gap:24px;
+`
+const ProfileImage=styled('img')`
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  border:3px solid rgba(90, 24, 154, 0.5);
+`
+const NameLink=styled('div')``
+const ProfileName=styled('h1')`
+   color:#C77DFF;
+   margin: 0;
+   ${TEXT_24_700}
+`
+const ConnectIcons=styled('div')`
+  ${ROW_JUSTIFY_START__ALIGN_CENTER}
+  gap:8px;
+`
+const ConnectIcon=styled('img')``
+const ConnectWallet=styled('div')``
+const ProfilesTab=styled(Box)`
+  ${COLUMN_JUSTIFY_START__ALIGN_CENTER}
+`
+const Items=styled(Box)`
+   ${ROW_ALIGN_START__JUSTIFY_START}
+   gap:8px;
+   width: 100%;
+   margin:0 8px;
+   padding:16px 8px 16px 8px;
+   border-bottom: 1px solid rgba(90, 24, 154, 0.5);
+`
+const ItemsName=styled('span')`
+  ${TEXT_16_700}
+  color:var(--text);
+ `
+const ModalStyle=styled(Modal)`
+.MuiDialog-paper {
+border-radius: 24px 0px 0px 24px !important;  
+width: 360px !important;
+max-width: 1000px;
+position: absolute;
+right: 0;
+/* top: 24px; */
+height: 940px;
+border: 1px solid var(--primary);
+box-shadow: -8px 8px 24px 0px rgba(36, 0, 70, 0.24);
+margin-right: 0;
+}
+`
 const Name = styled("div")`
   display: flex;
   padding: 0 10px;
