@@ -24,7 +24,7 @@ export function MarketPlace(props: Props) {
   useInjectSaga({ key: sliceKey, saga: marketPlaceSaga });
   const { t } = useTranslation();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const marketPlace = useSelector(selectMarketPlace);
+  // const marketPlace = useSelector(selectMarketPlace);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const dispatch = useDispatch();
 
