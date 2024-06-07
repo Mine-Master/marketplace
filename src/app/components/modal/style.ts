@@ -14,17 +14,24 @@ export const StyledDialog = styled(Dialog)`
 export const Wrapper = styled('div')`
   border-radius: 20px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* flex:1; */
+  /* height: 100%; */
   cursor: auto;
 `
 export const ChildWrapper = styled('div')`
   width: 100%;
+  /* height: 100%; */
+  flex:1;
   margin-left: auto;
   margin-right: auto;
 `
 export const TopWrapper = styled('div')`
   ${ROW_ALIGN_CENTER__SPACE_B}
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 `
 
 export const TopRightWrapper = styled('div')`
@@ -36,7 +43,7 @@ export const Title = styled('h1')`
   font-size: 30px;
   line-height: 38px;
   font-weight: 400;
-  color: var(--greyscale-800);
+  color: rgba(199, 125, 255, 1);
 `
 
 export const StyledDrawer = styled(Drawer)`

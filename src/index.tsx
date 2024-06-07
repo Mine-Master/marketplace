@@ -11,6 +11,7 @@ import { configureAppStore } from "store/configureStore";
 import { LocalStorageKeys, storage } from "store/storage";
 import GlobalStyle from "styles/globalStyles";
 import App from "./app/App";
+import { Web3ModalProvider } from "app/containers/web3-modal";
 interface Props {
   Component: typeof App;
 }
@@ -45,12 +46,14 @@ const ConnectedApp = ({ Component }: Props) => {
   }, [isFontLoaded]);
   return (
     <ReduxProvider store={store}>
+      <Web3ModalProvider>
       <I18nextProvider i18n={i18n}>
         <GlobalStyle />
         <HelmetProvider>
           {isFontLoaded ? <Component /> : <FontLoadingPage />}
         </HelmetProvider>
       </I18nextProvider>
+      </Web3ModalProvider>
     </ReduxProvider>
   );
 };

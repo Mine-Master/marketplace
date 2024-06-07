@@ -9,7 +9,7 @@ export const TEXT_12_700 = `
   font-weight: 700;
   line-height: 16.09px;
 `;
-export const TEXT_14_700 = css`
+export const TEXT_14_700 = `
   font-size: 14px;
   font-weight: 700;
   line-height: 16.09px;
