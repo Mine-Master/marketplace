@@ -21,7 +21,7 @@ export function Home(props: Props) {
   useInjectSaga({ key: sliceKey, saga: homeSaga });
   const { t } = useTranslation();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const home = useSelector(selectHome);
+  // const home = useSelector(selectHome);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const dispatch = useDispatch();
 

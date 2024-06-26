@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { ROW_ALIGN_CENTER__SPACE_B } from "styles/globalStyles";
+import {  ROW_ALIGN_CENTER__SPACE_B} from "styles/globalStyles";
 import { mediaQueries } from "styles/mediaQueries";
 import { useNavigate } from "react-router-dom";
 import { PrimaryButton } from "app/components/button/primaryButton";
 import { IMAGES } from "assets/react_asset_gen";
 import { SecondaryButton } from "app/components/button/secondaryButton";
 import SearchInput from "app/components/input/primary";
+import { Modal } from "app/components/modal";
+import { ProfileModal } from "app/containers/ProfileModal";
+import { CartModal } from "app/containers/CartModal";
 
 interface HeaderProps {
   open: boolean;
@@ -15,9 +18,29 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ open }) => {
   const navigate = useNavigate();
   const [search, setSearch ]= useState("");
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsProfileModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsProfileModalOpen(false);
+  };
   const handle = (e: any) => {
     setSearch(e.target.value);
   };
+
+
+  const handleOpenCartModal = () => {
+    setIsCartModalOpen(true);
+  };
+
+  const handleCloseCartModal = () => {
+    setIsCartModalOpen(false);
+  };
+
   const handleLogoClick = () => {
     window.scrollTo({
       top: 0,
@@ -51,15 +74,44 @@ export const Header: React.FC<HeaderProps> = ({ open }) => {
         value={search} onChange={handle}       
         />
         <Icons>
-          <SecondaryButton icon={IMAGES.cart} />
-          <SecondaryButton icon={IMAGES.person} />
+          <SecondaryButton icon={IMAGES.cart}  onClick={handleOpenCartModal}/>
+          <SecondaryButton icon={IMAGES.person}  onClick={handleOpenModal}/>
         </Icons>
-        <PrimaryButtons>let's play</PrimaryButtons>
+        <PrimaryButtons play>let's play</PrimaryButtons>
       </RightSideWrapper>
+      <ModalStyle
+        open={isProfileModalOpen}
+        onClose={handleCloseModal}
+        title=" "
+      >
+        <ProfileModal handleCloseModal={handleCloseModal}/>
+      </ModalStyle>
+      <ModalStyle
+        open={isCartModalOpen}
+        onClose={handleCloseCartModal}
+        title="Your Cart"
+      >
+        <CartModal/>
+      </ModalStyle>
     </HeaderWrapper>
   );
 };
 
+
+const ModalStyle=styled(Modal)`
+  .MuiDialog-paper {
+  border-radius: 24px 0px 0px 24px !important;  
+  width: 360px !important;
+  max-width: 1000px;
+  position: absolute;
+  right: 0;
+  top: 64px;
+  height: 940px;
+  border: 1px solid var(--primary);
+  box-shadow: -8px 8px 24px 0px rgba(36, 0, 70, 0.24);
+  margin-right: 0;
+}
+`
 const Name = styled("div")`
   display: flex;
   padding: 0 10px;
