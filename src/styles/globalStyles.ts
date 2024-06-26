@@ -3,77 +3,21 @@ import { createGlobalStyle, css } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 
 :root {
-  --text: #84868a;
-  --font:"Inter", "Rubik";
+  --text: #FEF7FF;
+  --font:"Ubuntu", "sans-serif";
   --persian-font:"Rubik";
-  --border:#E2E8F0;
-  --title:#0E172A;
-  --background-secondary:rgb(248 250 252/1);
-  --button:#007ACC;
-  --button-text:#fff;
-  --background-color:#fff;
-  --primary: rgba(7, 0, 18, 1);
+  --border:rgba(90,24,154,0.5);
+  --title:#9D4EDD;
+  --background-secondary:rgba(254,247,255,0.05);
+  --button-text:#FEF7FF;
+  --background-color:#070012;
+  --primary: #5A189A;
+  --orange:#ffc14d;
+  --Pastal-Blue: #00caff;
+  --error: #9A183F;
+
 }
 .DARK {
-    --text: #e5e7eb;
-    --border: #374151;
-    --title: #ffffff;
-    --background-secondary: #1f2937;
-    --background-color: #111827;
-}
-.DRACULA{
-  --text: #f8f8f2;
-  --border: #44475a;
-  --title: #50fa7b;
-  --background-secondary: #282a36;
-  --button: #bd93f9;
-  --button-text: #f8f8f2;
-  --background-color: #282a36;
-}
-.SOLAR{
-  --text: #657b83;
-  --border: #93a1a1;
-  --title: #268bd2;
-  --background-secondary: #fdf6e3;
-  --button: #cb4b16;
-  --button-text: #fdf6e3;
-  --background-color: #002b36;
-}
-.NORD{
-  --text: #d8dee9;
-  --border: #4c566a;
-  --title: #81a1c1;
-  --background-secondary: #2e3440;
-  --button: #88c0d0;
-  --button-text: #2e3440;
-  --background-color: #3b4252;
-}
-.DISCORD{
-  --text: #b9bbbe;
-  --border: #4f545c;
-  --title: #7289da;
-  --background-secondary: #36393f;
-  --button: #7289da;
-  --button-text: #ffffff;
-  --background-color: #2f3136;
-}
-.MIDNIGHT{
-  --text: #c3c3c3;
-  --border: #586069;
-  --title: #99aab5;
-  --background-secondary: #292b2f;
-  --button: #00bcd4; /* Cyan accent color */
-  --button-text: #ffffff;
-  --background-color: #1e1e1e;
-}
-.LOCA{
-  --text: #d8dee9;
-  --border: #a4acc4;
-  --title: #ffcc00;
-  --background-secondary: #3d4754;
-  --button: #4caf50;
-  --button-text: #ffffff;
-  --background-color: #282c34;
 }
 .fa{
   --font:"Rubik" !important;
@@ -94,14 +38,14 @@ html {
   overflow-x: hidden;
 }
 *{
-  color: var(--text);
+  color: #fff;
  box-sizing:border-box ;
  font-family : var(--font),sans-serif,system-ui, -apple-system,'Helvetica Neue',"Rubik";
 }
 `;
 //COLUMN
 
-export const ROW = css`
+export const ROW = `
   display: flex;
   flex-direction: row;
 `;
@@ -113,11 +57,11 @@ const CENTER = css`
   align-items: center;
   justify-content: center;
 `;
-export const COLUMN_CENTER = css`
+export const COLUMN_CENTER = `
   ${CENTER}
   ${COLUMN}
 `;
-export const ROW_CENTER = css`
+export const ROW_CENTER = `
   ${CENTER}
   ${ROW}
 `;
@@ -171,7 +115,7 @@ export const COLUMN_ALIGN_START__SPACE_B = css`
   justify-content:space-between;
   align-items: flex-start;
 `;
-export const COLUMN_ALIGN_CENTER__SPACE_B = css`
+export const COLUMN_ALIGN_CENTER__SPACE_B = `
   ${COLUMN}
   justify-content:space-between;
   align-items: center;
@@ -179,9 +123,14 @@ export const COLUMN_ALIGN_CENTER__SPACE_B = css`
 
 // ROWS
 
-export const ROW_JUSTIFY_END__ALIGN_CENTER = css`
+export const ROW_JUSTIFY_END__ALIGN_CENTER = `
   ${ROW}
   justify-content: flex-end;
+  align-items: center;
+`;
+export const ROW_JUSTIFY_CENTER__ALIGN_CENTER = `
+  ${ROW}
+  justify-content: center;
   align-items: center;
 `;
 export const ROW_JUSTIFY_START__ALIGN_CENTER = css`
@@ -219,7 +168,7 @@ export const ROW_ALIGN_END__JUSTIFY_START = css`
   justify-content: flex-end;
   align-items: flex-end;
 `;
-export const ROW_ALIGN_END__SPACE_B = css`
+export const ROW_ALIGN_END__SPACE_B = `
   ${ROW}
   justify-content:space-between;
   align-items: flex-end;
@@ -229,7 +178,7 @@ export const ROW_ALIGN_START__SPACE_B = css`
   justify-content:space-between;
   align-items: flex-start;
 `;
-export const ROW_ALIGN_CENTER__SPACE_B = css`
+export const ROW_ALIGN_CENTER__SPACE_B = `
   ${ROW}
   justify-content:space-between;
   align-items: center;
@@ -246,7 +195,7 @@ export const UNSELECTABLE = css`
   -ms-user-select: none;
   user-select: none;
 `;
-export const BUTTON = css`
+export const BUTTON = `
   ${UNSELECTABLE}
   border: none;
   text-align: center;

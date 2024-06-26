@@ -3,6 +3,7 @@ export enum AppPages {
   HomePage = "/home",
   NotFoundPage = "*",
   AboutMe = "/aboutMe",
+  MarketPlace="/marketPlace"
   // [INSERT NEW PAGE PATH ABOVE] < Needed for generating containers seamlessly
 }
 export enum Themes {
@@ -19,6 +20,7 @@ export enum Themes {
 type ITab = {
   name: string;
   img: string;
+  hoverImg: string;
   routeTo: string;
 };
 
@@ -26,6 +28,7 @@ export type ITabs = {
   [key: string]: {
     name: string;
     img: string;
+    hoverImg: string;
     routeTo: string;
     children?: ITab[];
   };
