@@ -5,6 +5,7 @@ import { IMAGES } from 'assets/react_asset_gen'
 import styled from 'styled-components'
 import {  TEXT_24_700 } from 'styles/global-typography'
 import { ROW_ALIGN_CENTER__SPACE_B } from 'styles/globalStyles'
+import { Link } from 'react-router-dom'
 
 const sampleCards = [
     { iconSrc: `${IMAGES.fadeland}`, landNum: '# Land 578', usdPrice: '10.70 USD', xcnPrice: '10 XCN'},
@@ -22,7 +23,9 @@ export const Tops = () => {
     <Wrapper>
         <Header>
             <Topic>Top Lands</Topic>
-            <SecondaryButtons icon={IMAGES.arrowIcon}>view all</SecondaryButtons>
+            <LinkStyle to="/Lands">
+              <SecondaryButtons icon={IMAGES.arrowIcon}>view all</SecondaryButtons>
+            </LinkStyle>
         </Header>
         <Container>
           {sampleCards.map((card, index) => (
@@ -37,7 +40,9 @@ export const Tops = () => {
         </Container>
         <Header>
             <Topic>Top Miners</Topic>
-            <SecondaryButtons icon={IMAGES.arrowIcon}>view all</SecondaryButtons>
+            <LinkStyle to="/Miners">
+              <SecondaryButtons icon={IMAGES.arrowIcon}>view all</SecondaryButtons>
+            </LinkStyle>
         </Header>
         <Container>
           {sampleCards.map((card, index) => (
@@ -52,7 +57,9 @@ export const Tops = () => {
         </Container>
         <Header>
             <Topic>Top Soldires</Topic>
-            <SecondaryButtons icon={IMAGES.arrowIcon}>view all</SecondaryButtons>
+            <LinkStyle to="/Soldiers">
+              <SecondaryButtons icon={IMAGES.arrowIcon}>view all</SecondaryButtons>
+            </LinkStyle>
         </Header>
         <Container>
           {sampleCards.map((card, index) => (
@@ -90,3 +97,7 @@ const Container = styled.div`
     margin-top: 20px;
     margin-bottom: 90px;
 `;
+
+const LinkStyle=styled(Link)`
+  text-decoration: none;
+`

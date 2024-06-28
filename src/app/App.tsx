@@ -6,7 +6,6 @@ import { Outlet, Route, Router, Routes } from "react-router-dom";
 import { globalActions, useglobalSlice } from "store/slice";
 import styled from "styled-components";
 import { COLUMN_ALIGN_START__JUSTIFY_START } from "styles/globalStyles";
-import { Header } from "./components/header";
 import { AboutMe } from "./containers/AboutMe/Loadable";
 import { Home } from "./containers/Home";
 import { NotFoundPage } from "./containers/NotFound";
@@ -14,6 +13,9 @@ import history from "./router/history";
 import { AppPages } from "./types";
 import { AppLayout } from "common/layouts/appLayout";
 import { MarketPlace } from "./containers/MarketPlace";
+import TopLandCollections from "./containers/MarketPlace/components/topLands";
+import TopMinerCollections from "./containers/MarketPlace/components/topMiners";
+import TopSoldierCollections from "./containers/MarketPlace/components/topSoldiers";
 interface CustomRouterProps {
   history: History;
   children?: ReactElement;
@@ -56,6 +58,9 @@ function App() {
           <Route path={AppPages.RootPage} element={<NavLayout />}>
             <Route path={AppPages.RootPage} element={<Home />} />
             <Route path={AppPages.MarketPlace} element={<MarketPlace />} />
+            <Route path={AppPages.TopLands} element={<TopLandCollections/>} />
+            <Route path={AppPages.TopMiners} element={<TopMinerCollections/>} />
+            <Route path={AppPages.TopSoldiers} element={<TopSoldierCollections/>} />
             <Route path={AppPages.AboutMe} element={<AboutMe />} />
             <Route path={AppPages.NotFoundPage} element={<NotFoundPage />} />
           </Route>
